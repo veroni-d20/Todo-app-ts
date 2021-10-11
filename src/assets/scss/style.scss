@@ -1,0 +1,71 @@
+@use "sass:map";
+
+/* make the customizations */
+$theme-colors: (
+  "primary": #ffffff,
+  "dark": #182340,
+  "secondary": #fd4747,
+  "danger": #d40000,
+  "info": #29e6e6,
+  "warning": #efa640,
+  "dull": #545c74,
+  "black": #020202,
+  "success": #03973e,
+  "teal": #7dccbd,
+);
+
+$pink: #e74885;
+$yellow: #fcab2d;
+$purple: #7f52c4;
+$grey: #eef0ee;
+$teal: #7dccbd;
+$orange: #fc7a24;
+
+@import "~bootstrap/scss/bootstrap";
+@import "../fonts/fonts.css";
+
+// .main-bg {
+//   background-color: $pink;
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+@media (min-width: 319px) {
+  .mt-xs-5 {
+    margin-top: 5rem;
+  }
+  .mt-xs-4 {
+    margin-top: 4rem;
+  }
+  .mt-xs-3 {
+    margin-top: 3rem;
+  }
+}
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: white;
+}
+
+.btn-outline-teal {
+  color: white;
+  background-color: #52ccb6;
+}
+.btn-outline-teal:hover {
+  color: white;
+  background-color: #7dccbd;
+}
+
+.full-vh {
+  height: 100vh;
+}
+
+.half-vh {
+  height: 50vh;
+}
