@@ -7,7 +7,7 @@ export default function TodosList() {
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todos);
 
-  let size = 3;
+  let size = 2;
   let arrayOfArrays = [];
 
   for (let i = 0; i < todos.length; i += size) {
