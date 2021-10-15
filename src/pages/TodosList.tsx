@@ -30,7 +30,7 @@ export default function TodosList() {
                         {todo.text}
                       </h5>
                     ) : (
-                      <h5 className="card-title">todo.text</h5>
+                      <h5 className="card-title">{todo.text}</h5>
                     )}
                     <div className="d-flex justify-content-between">
                       <button
