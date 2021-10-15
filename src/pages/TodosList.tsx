@@ -1,4 +1,3 @@
-// import { FC } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo } from "../redux/todoSlice";
