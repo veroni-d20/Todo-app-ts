@@ -34,7 +34,8 @@ $orange: #fc7a24;
 .btn-secondary,
 .btn-primary,
 .btn-primary:hover,
-.btn-primary:focus .btn-secondary:hover,
+.btn-primary:focus,
+.btn-secondary:hover,
 .btn-secondary:focus {
   color: white;
 }
