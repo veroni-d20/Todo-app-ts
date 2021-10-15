@@ -18,7 +18,7 @@ export default function LandingPage() {
   return (
     <>
       <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
-        <section className="d-md-flex flex-md-column align-items-center justify-content-center w-md-50">
+        <section className="d-md-flex flex-md-column align-justify-center w-md-50">
           <div className="text-center text-md-start">
             <h1 className="mt-xs-3 mt-md-0">To Do App</h1>
             <div className="input-group mt-3">
