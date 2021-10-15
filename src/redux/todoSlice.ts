@@ -32,6 +32,11 @@ const todoSlice = createSlice({
         (st) => st.id === action.payload && state.splice(state.indexOf(st), 1)
       );
     },
+    completeTodo: (state, action: PayloadAction<number>) => {
+      state.map(
+        (st) => st.id === action.payload && (st.completed = true)
+      );
+    },
   },
 });
 
