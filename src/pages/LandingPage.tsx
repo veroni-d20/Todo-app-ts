@@ -5,20 +5,20 @@ import { addTodo } from "../redux/todoSlice";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  const todoRef: any = useRef<HTMLInputElement>(null);
+  const todoRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = () => {
-    const theValue: string = todoRef.current.value.trim();
+    const theValue = todoRef.current ? todoRef.current.value.trim() : "";
     if (theValue !== "" && theValue !== null) {
       dispatch(addTodo(theValue));
     }
-    todoRef.current.value = "";
+    todoRef.current && (todoRef.current.value = "");
   };
 
   return (
     <>
       <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
-        <section className="d-md-flex flex-md-column align-items-center justify-content-center w-100">
+        <section className="d-md-flex flex-md-column align-items-center justify-content-center w-md-50">
           <div className="text-center text-md-start">
             <h1 className="mt-xs-3 mt-md-0">To Do App</h1>
             <div className="input-group mt-3">
@@ -41,7 +41,6 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
         <section className="w-100 mt-xs-3 mt-md-0">
           <TodosList />
         </section>
