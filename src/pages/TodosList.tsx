@@ -39,7 +39,7 @@ export default function TodosList() {
                           dispatch(completeTodo(todo.id));
                         }}
                       >
-                        Delete
+                        Done
                       </button>
                       <button
                         className="btn btn-secondary mt-2"
