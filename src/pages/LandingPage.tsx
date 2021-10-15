@@ -41,7 +41,7 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        <section className="w-100 mt-xs-3 mt-md-0">
+        <section className="w-100 mt-xs-2 mt-md-0">
           <TodosList />
         </section>
       </main>
