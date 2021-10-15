@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { deleteTodo } from "../redux/todoSlice";
+import { deleteTodo, completeTodo } from "../redux/todoSlice";
 
 export default function TodosList() {
   const dispatch = useDispatch();
