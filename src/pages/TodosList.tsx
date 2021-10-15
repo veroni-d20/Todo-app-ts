@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/todoSlice";
@@ -8,7 +8,6 @@ import TextField from "@mui/material/TextField";
 export default function TodosList() {
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todos);
-
   const [todoList, setTodoList] = useState(todos);
 
   let size = 2;
@@ -37,7 +36,12 @@ export default function TodosList() {
     <>
       <section className="d-flex flex-column align-items-center">
         <div className="mb-4">
-          <TextField onChange={(e) => handleChange(e.target.value)} />
+          <TextField
+            id="standard-basic"
+            label="Standard"
+            variant="standard"
+            onChange={(e) => handleChange(e.target.value)}
+          />
         </div>
         <div
           className="container-fluid scroll-bar"
