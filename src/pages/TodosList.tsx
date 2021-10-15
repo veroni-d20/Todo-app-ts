@@ -21,7 +21,7 @@ export default function TodosList() {
           <SearchBar />
         </div>
         <div
-          className="container-fluid"
+          className="container-fluid scroll-bar"
           style={{ maxHeight: "85vh", overflowY: "auto" }}
         >
           {arrayOfArrays.map((chunk, index) => (
