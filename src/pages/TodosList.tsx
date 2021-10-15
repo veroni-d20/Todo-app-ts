@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/todoSlice";
-// import SearchBar from "../components/SearchBar";
 import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 export default function TodosList() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function TodosList() {
     arrayOfArrays.push(todoList.slice(i, i + size));
   }
 
-  function handleChange(searchedVal: string) {
+  function handleChange(searchedVal: string | null) {
     if (searchedVal === "" || searchedVal === null) {
       setTodoList(todos);
     } else {
@@ -28,6 +28,10 @@ export default function TodosList() {
     }
   }
 
+  const flatProps = {
+    options: todos.map((option) => option.text),
+  };
+
   useEffect(() => {
     setTodoList(todos);
   }, [todos]);
@@ -35,12 +39,15 @@ export default function TodosList() {
   return (
     <>
       <section className="d-flex flex-column align-items-center">
-        <div className="mb-4">
-          <TextField
-            id="standard-basic"
-            label="Standard"
-            variant="standard"
-            onChange={(e) => handleChange(e.target.value)}
+        <div className="mb-4" style={{ width: "50vw" }}>
+          <Autocomplete
+            onChange={(e, v) => handleChange(v)}
+            {...flatProps}
+            id="clear-on-escape"
+            clearOnEscape
+            renderInput={(params) => (
+              <TextField {...params} label="Search Todo" variant="standard" />
+            )}
           />
         </div>
         <div
