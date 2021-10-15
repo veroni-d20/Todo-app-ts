@@ -25,7 +25,13 @@ export default function TodosList() {
               <div className="col-md-6" key={todo.id}>
                 <div className="card mb-4">
                   <div className="card-body">
-                    <h5 className="card-title">{todo.text}</h5>
+                    {todo.completed ? (
+                      <h5 className="text-decoration-line-through card-title">
+                        {todo.text}
+                      </h5>
+                    ) : (
+                      <h5 className="card-title">todo.text</h5>
+                    )}
                     <button
                       className="btn btn-secondary mt-2"
                       onClick={() => {
