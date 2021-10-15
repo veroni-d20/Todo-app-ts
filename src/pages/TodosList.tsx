@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/todoSlice";
+import SearchBar from "../components/SearchBar";
 
 export default function TodosList() {
   const dispatch = useDispatch();
@@ -15,48 +16,53 @@ export default function TodosList() {
 
   return (
     <>
-      <div
-        className="container-fluid"
-        style={{ maxHeight: "100vh", overflowY: "auto" }}
-      >
-        {arrayOfArrays.map((chunk, index) => (
-          <div className="row" key={index}>
-            {chunk.map((todo) => (
-              <div className="col-md-6" key={todo.id}>
-                <div className="card mb-4">
-                  <div className="card-body">
-                    {todo.completed ? (
-                      <h5 className="text-decoration-line-through card-title">
-                        {todo.text}
-                      </h5>
-                    ) : (
-                      <h5 className="card-title">{todo.text}</h5>
-                    )}
-                    <div className="d-flex justify-content-between">
-                      <button
-                        className="btn btn-primary mt-2"
-                        onClick={() => {
-                          dispatch(completeTodo(todo.id));
-                        }}
-                      >
-                        Done
-                      </button>
-                      <button
-                        className="btn btn-secondary mt-2"
-                        onClick={() => {
-                          dispatch(deleteTodo(todo.id));
-                        }}
-                      >
-                        Delete
-                      </button>
+      <section className="d-flex flex-column align-items-center">
+        <div className="mb-5 mb-md-4">
+          <SearchBar />
+        </div>
+        <div
+          className="container-fluid"
+          style={{ maxHeight: "85vh", overflowY: "auto" }}
+        >
+          {arrayOfArrays.map((chunk, index) => (
+            <div className="row" key={index}>
+              {chunk.map((todo) => (
+                <div className="col-md-6" key={todo.id}>
+                  <div className="card mb-4">
+                    <div className="card-body">
+                      {todo.completed ? (
+                        <h5 className="text-decoration-line-through card-title">
+                          {todo.text}
+                        </h5>
+                      ) : (
+                        <h5 className="card-title">{todo.text}</h5>
+                      )}
+                      <div className="d-flex justify-content-between">
+                        <button
+                          className="btn btn-primary mt-2"
+                          onClick={() => {
+                            dispatch(completeTodo(todo.id));
+                          }}
+                        >
+                          Done
+                        </button>
+                        <button
+                          className="btn btn-secondary mt-2"
+                          onClick={() => {
+                            dispatch(deleteTodo(todo.id));
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
