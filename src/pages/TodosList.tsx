@@ -32,14 +32,24 @@ export default function TodosList() {
                     ) : (
                       <h5 className="card-title">todo.text</h5>
                     )}
-                    <button
-                      className="btn btn-secondary mt-2"
-                      onClick={() => {
-                        dispatch(deleteTodo(todo.id));
-                      }}
-                    >
-                      Delete
-                    </button>
+                    <div className="d-flex justify-content-between">
+                      <button
+                        className="btn btn-primary mt-2"
+                        onClick={() => {
+                          dispatch(completeTodo(todo.id));
+                        }}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="btn btn-secondary mt-2"
+                        onClick={() => {
+                          dispatch(deleteTodo(todo.id));
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
