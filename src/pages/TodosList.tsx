@@ -93,7 +93,7 @@ export default function TodosList() {
               </div>
             ))
           ) : (
-            <p className="text-center">No results found</p>
+            <p className="text-center">No Todos found</p>
           )}
         </div>
       </section>
