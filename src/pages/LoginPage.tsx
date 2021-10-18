@@ -2,8 +2,10 @@ import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
+  const history = useHistory();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,6 +20,7 @@ export default function LoginPage() {
     const password = passwordRef.current ? passwordRef.current.value : "";
     try {
       await login(email, password);
+      history.push("/home");
     } catch {
       setError("Invalid email or password");
       setLoading(false);
