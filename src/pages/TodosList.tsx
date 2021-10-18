@@ -38,7 +38,7 @@ export default function TodosList() {
 
   return (
     <>
-      <section className="d-flex flex-column align-items-center">
+      <section className="vh-100 d-flex flex-column align-items-center pt-3">
         <div className="mb-4" style={{ width: "50vw" }}>
           <Autocomplete
             onChange={(e, v) => handleChange(v)}
