@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { deleteTodo, completeTodo } from "../redux/todoSlice";
+import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 

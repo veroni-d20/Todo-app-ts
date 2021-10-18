@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import TodosList from "./TodosList";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/todoSlice";
+import { addTodo } from "../redux/slices/todoSlice";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
