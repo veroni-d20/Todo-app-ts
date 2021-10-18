@@ -19,7 +19,7 @@ export default function LoginPage() {
   return (
     <>
       <main className="d-flex flex-column flex-md-row">
-        <section className="vh-25 vh-md-100 d-md-flex align-justify-center w-50">
+        <section className="vh-25 vh-md-100 d-flex align-justify-center w-100 w-md-50">
           <h1 className="">To Do App</h1>
         </section>
         <section className="d-flex flex-column flex-md-row align-justify-center">
