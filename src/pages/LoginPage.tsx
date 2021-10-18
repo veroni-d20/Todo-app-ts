@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const { login } = useAuth();
 
-  function handleLogin() {
+  async function handleLogin() {
     setLoading(true);
     const email = emailRef.current ? emailRef.current.value : "";
     const password = passwordRef.current ? passwordRef.current.value : "";
