@@ -14,6 +14,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<object | null>(null);
 
   function login({ email, password }: { email: string; password: string }) {
@@ -23,6 +24,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
+      setLoading(false);
     });
     return unsubscribe;
   }, []);
@@ -30,6 +32,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const value = { user, login };
 
   return (
-    <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+    <>
+      {!loading && (
+        <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+      )}
+    </>
   );
 }
