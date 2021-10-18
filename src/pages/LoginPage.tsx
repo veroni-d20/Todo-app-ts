@@ -1,40 +1,57 @@
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { useRef } from "react";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { useRef, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const { login } = useAuth();
 
   function handleLogin() {
+    setLoading(true);
     const email = emailRef.current ? emailRef.current.value : "";
     const password = passwordRef.current ? passwordRef.current.value : "";
-    console.log(email, password);
+    login(email, password);
   }
 
   return (
     <>
-      <section className="full-vh d-flex align-justify-center">
-        <div className="text-center shadow p-5 bg-body rounded">
-          <TextField
-            inputRef={emailRef}
-            className="d-block mb-5"
-            label="Email"
-            variant="filled"
-            type="email"
-          />
-          <TextField
-            inputRef={passwordRef}
-            className="d-block mb-5"
-            label="Password"
-            variant="filled"
-            type="password"
-          />
-          <Button variant="contained" onClick={handleLogin}>
-            Login
-          </Button>
-        </div>
-      </section>
+      <main className="d-flex flex-column flex-md-row">
+        <section className="vh-25 vh-md-100 d-md-flex align-justify-center w-50">
+          <h1 className="">To Do App</h1>
+        </section>
+        <section className="d-flex flex-column flex-md-row align-justify-center">
+          <div className="text-center shadow p-5 bg-body rounded">
+            <TextField
+              inputRef={emailRef}
+              className="mb-5"
+              label="Email"
+              variant="filled"
+              type="email"
+            />
+            <br />
+            <TextField
+              inputRef={passwordRef}
+              className="mb-5"
+              label="Password"
+              variant="filled"
+              type="password"
+            />
+            <br />
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              size="large"
+              onClick={handleLogin}
+              type="button"
+            >
+              Login
+            </LoadingButton>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
