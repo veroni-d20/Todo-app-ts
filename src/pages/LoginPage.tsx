@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function LoginPage() {
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const emailRef = useRef<HTMLInputElement | null>(null);
