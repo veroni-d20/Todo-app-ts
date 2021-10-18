@@ -20,7 +20,7 @@ export default function LandingPage() {
       <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
         <section className="d-md-flex flex-md-column align-justify-center w-md-50">
           <div className="text-center text-md-start">
-            <h1 className="mt-xs-3 mt-md-0">To Do App</h1>
+            <h1 className="mt-3 mt-md-0">To Do App</h1>
             <div className="input-group mt-3">
               <input
                 type="text"
@@ -41,7 +41,7 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        <section className="w-100 mt-xs-2 mt-md-0">
+        <section className="w-100 mt-2 mt-md-0">
           <TodosList />
         </section>
       </main>
