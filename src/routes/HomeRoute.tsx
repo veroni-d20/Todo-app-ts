@@ -1,22 +1,9 @@
-import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { auth } from "../firebase";
-import Loader from "../components/Loader";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function HomeRoute(props: any) {
   const Component = props.component;
-  const [loading, setLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<boolean>(false);
+  const { user } = useAuth();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      user && setUser(true);
-      setLoading(false);
-    });
-    return unsubscribe;
-  }, []);
-
-  return (
-    <>{loading ? <Loader /> : user ? <Component /> : <Redirect to="/" />}</>
-  );
+  return <>{user ? <Component /> : <Redirect to="/" />}</>;
 }
