@@ -43,6 +43,7 @@ export default function LoginPage() {
               type="password"
             />
             <br />
+            {error && <p className="text-danger">{error}</p>}
             <LoadingButton
               loading={loading}
               variant="contained"
