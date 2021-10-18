@@ -5,8 +5,10 @@ import { useAuth } from "../contexts/AuthContext";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
+
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+
   const { login } = useAuth();
 
   function handleLogin() {
