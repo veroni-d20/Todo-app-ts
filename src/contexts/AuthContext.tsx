@@ -21,6 +21,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     auth.signInWithEmailAndPassword(email, password);
   }
 
+  function logout() {
+    auth.signOut();
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -29,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return unsubscribe;
   }, []);
 
-  const value = { user, login };
+  const value = { user, login, logout };
 
   return (
     <>
