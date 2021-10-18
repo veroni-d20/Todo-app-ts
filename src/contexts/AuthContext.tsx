@@ -13,7 +13,7 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export default function AuthProvider({ children }: { children: ReactNode }) {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<object | null>(null);
 
   function login({ email, password }: { email: string; password: string }) {
