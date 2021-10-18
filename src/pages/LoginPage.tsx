@@ -16,7 +16,12 @@ export default function LoginPage() {
     setLoading(true);
     const email = emailRef.current ? emailRef.current.value : "";
     const password = passwordRef.current ? passwordRef.current.value : "";
-    login(email, password);
+    try {
+      await login(email, password);
+    } catch {
+      setError("Invalid email or password");
+      setLoading(false);
+    }
   }
 
   return (
