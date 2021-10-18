@@ -22,8 +22,13 @@ export default function LinearDeterminate() {
   }, []);
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <LinearProgress variant="determinate" value={progress} />
-    </Box>
+    <div
+      className="d-flex align-items-center justify-content-center px-4"
+      style={{ height: "100vh" }}
+    >
+      <Box sx={{ width: "100%" }}>
+        <LinearProgress variant="determinate" value={progress} />
+      </Box>
+    </div>
   );
 }
