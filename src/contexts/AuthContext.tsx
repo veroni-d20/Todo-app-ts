@@ -17,7 +17,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<object | null>(null);
 
   function login({ email, password }: { email: string; password: string }) {
-    auth.createUserWithEmailAndPassword(email, password);
+    auth.signInWithEmailAndPassword(email, password);
   }
 
   useEffect(() => {
