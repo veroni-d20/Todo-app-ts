@@ -21,7 +21,7 @@ export default function TodosList() {
     if (searchedVal === "" || searchedVal === null) {
       setTodoList(todos);
     } else {
-      const filteredTodos = todoList.filter((row) =>
+      const filteredTodos = todos.filter((row) =>
         row.text.toLowerCase().includes(searchedVal.toLowerCase())
       );
       setTodoList(filteredTodos);
