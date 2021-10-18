@@ -11,6 +11,7 @@ export default function LoginPage() {
     const password = passwordRef.current ? passwordRef.current.value : "";
     console.log(email, password);
   }
+
   return (
     <>
       <section className="full-vh d-flex align-justify-center">
