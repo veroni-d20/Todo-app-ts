@@ -17,7 +17,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<object | null>(null);
 
-  function login({ email, password }: { email: string; password: string }) {
+  function login(email: string, password: string) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
