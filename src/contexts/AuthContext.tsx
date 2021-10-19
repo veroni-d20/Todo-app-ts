@@ -6,6 +6,7 @@ import {
   ReactNode,
 } from "react";
 import { auth } from "../firebase";
+import Loader from "../components/Loader";
 
 const AuthContext = createContext<any>(null);
 
@@ -37,9 +38,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {!loading && (
-        <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
-      )}
+      <AuthContext.Provider value={value}>
+        {loading ? <Loader /> : children}
+      </AuthContext.Provider>
     </>
   );
 }
