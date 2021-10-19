@@ -21,9 +21,13 @@ export default function LoginPage() {
     try {
       await login(email, password);
       history.push("/home");
-    } catch {
+    } catch (err) {
       setError("Invalid email or password");
-      setLoading(false);
+      setTimeout(() => {
+        setError(null);
+        setLoading(false);
+      }, 3000);
+      console.log(err);
     }
   }
 
