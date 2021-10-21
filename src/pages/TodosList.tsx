@@ -59,7 +59,10 @@ export default function TodosList() {
               <div className="row" key={index}>
                 {chunk.map((todo) => (
                   <div className="col-md-6" key={todo.id}>
-                    <div className="card mb-4">
+                    <div
+                      className="shadow bg-light rounded mb-4"
+                      style={{ borderColor: "none" }}
+                    >
                       <div className="card-body">
                         {todo.completed ? (
                           <h5 className="text-decoration-line-through card-title">
@@ -68,9 +71,9 @@ export default function TodosList() {
                         ) : (
                           <h5 className="card-title">{todo.text}</h5>
                         )}
-                        <div className="d-flex justify-content-between">
+                        <div className="d-flex justify-content-between mt-5">
                           <button
-                            className="btn btn-primary mt-2"
+                            className="btn btn-primary"
                             onClick={() => {
                               dispatch(completeTodo(todo.id));
                             }}
@@ -78,7 +81,7 @@ export default function TodosList() {
                             Done
                           </button>
                           <button
-                            className="btn btn-secondary mt-2"
+                            className="btn btn-secondary"
                             onClick={() => {
                               dispatch(deleteTodo(todo.id));
                             }}
