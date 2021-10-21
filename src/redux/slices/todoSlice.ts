@@ -22,7 +22,8 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
       const newTodo: Todo = {
-        id: state[state.length - 1].id + 1,
+        id:
+          state.length > 0 ? state[state.length - 1].id + 1 : state.length + 1,
         text: action.payload,
         completed: false,
       };
