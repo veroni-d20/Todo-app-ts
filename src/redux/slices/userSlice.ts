@@ -8,9 +8,9 @@ interface User {
 
 const initialState: User[] = [
   {
-    id: 12,
-    firstName: "Do assignment",
-    lastName: "",
+    id: 1,
+    firstName: "Veroni",
+    lastName: "Shwetha",
   },
 ];
 
