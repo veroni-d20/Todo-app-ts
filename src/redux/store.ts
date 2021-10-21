@@ -15,8 +15,9 @@ const store = configureStore({
   reducer,
   middleware: [sagaMiddleware],
 });
-export type RootState = ReturnType<typeof store.getState>;
 
 sagaMiddleware.run(watcherSaga);
+
+export type RootState = ReturnType<typeof store.getState>;
 
 export default store;
