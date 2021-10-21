@@ -76,7 +76,7 @@ export default function TodosList() {
                           <h5 className="card-title">{todo.text}</h5>
                         )}
                         <div className="d-flex justify-content-between mt-5">
-                          <Tooltip title="Done">
+                          <Tooltip title={todo.completed ? "Undone" : "Done"}>
                             <Button
                               variant="outlined"
                               onClick={() => {
