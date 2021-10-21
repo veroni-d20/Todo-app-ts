@@ -10,12 +10,13 @@ import Home from "./pages/Home";
 import Error404 from "./pages/Error404";
 
 import HomeRoute from "./routes/HomeRoute";
+import LoginRoute from "./routes/LoginRoute";
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <LoginRoute exact path="/" component={Login} />
         <HomeRoute exact path="/home" component={Home} />
         <Route exact path="/404" component={Error404} />
         <Redirect to="/404" />
