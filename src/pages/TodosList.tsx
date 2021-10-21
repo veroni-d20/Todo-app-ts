@@ -7,6 +7,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
+import UndoIcon from "@mui/icons-material/Undo";
 import Tooltip from "@mui/material/Tooltip";
 
 export default function TodosList() {
@@ -83,7 +84,7 @@ export default function TodosList() {
                                 dispatch(completeTodo(todo.id));
                               }}
                             >
-                              <DoneIcon />
+                              {todo.completed ? <UndoIcon /> : <DoneIcon />}
                             </Button>
                           </Tooltip>
                           <Tooltip title="Delete">
