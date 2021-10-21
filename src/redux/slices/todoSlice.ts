@@ -8,12 +8,12 @@ interface Todo {
 
 const initialState: Todo[] = [
   {
-    id: 10,
+    id: 12,
     text: "Do assignment",
     completed: false,
   },
   { id: 11, text: "Play football", completed: false },
-  { id: 12, text: "Eat, sleep, repeat", completed: false },
+  { id: 10, text: "Eat, sleep, repeat", completed: false },
 ];
 
 const todoSlice = createSlice({
@@ -22,12 +22,11 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
       const newTodo: Todo = {
-        id:
-          state.length > 0 ? state[state.length - 1].id + 1 : state.length + 1,
+        id: state.length > 0 ? state[0].id + 1 : state.length + 1,
         text: action.payload,
         completed: false,
       };
-      state.push(newTodo);
+      state.unshift(newTodo);
     },
 
     deleteTodo: (state, action: PayloadAction<number>) => {
