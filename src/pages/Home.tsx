@@ -2,8 +2,10 @@ import { useRef } from "react";
 import TodosList from "./TodosList";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/slices/todoSlice";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function LandingPage() {
+  const { logout } = useAuth();
   const dispatch = useDispatch();
   const todoRef = useRef<HTMLInputElement | null>(null);
 
