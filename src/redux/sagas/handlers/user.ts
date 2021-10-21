@@ -6,8 +6,8 @@ import { SagaReturnType } from "@redux-saga/core/effects";
 export function* handleGetUser() {
   try {
     const res: SagaReturnType<typeof axiosGet> = yield call(axiosGet);
-    const { id, firstName, lastName } = res.data;
-    yield put(setUser({ id: id, firstName: firstName, lastName: lastName }));
+    const data = res.data;
+    yield put(setUser(data));
   } catch (error) {
     console.log(error);
   }
