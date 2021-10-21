@@ -4,6 +4,10 @@ import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DoneIcon from "@mui/icons-material/Done";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function TodosList() {
   const dispatch = useDispatch();
@@ -72,22 +76,26 @@ export default function TodosList() {
                           <h5 className="card-title">{todo.text}</h5>
                         )}
                         <div className="d-flex justify-content-between mt-5">
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => {
-                              dispatch(completeTodo(todo.id));
-                            }}
-                          >
-                            Done
-                          </button>
-                          <button
-                            className="btn btn-secondary"
-                            onClick={() => {
-                              dispatch(deleteTodo(todo.id));
-                            }}
-                          >
-                            Delete
-                          </button>
+                          <Tooltip title="Done">
+                            <Button
+                              variant="outlined"
+                              onClick={() => {
+                                dispatch(completeTodo(todo.id));
+                              }}
+                            >
+                              <DoneIcon />
+                            </Button>
+                          </Tooltip>
+                          <Tooltip title="Delete">
+                            <Button
+                              variant="outlined"
+                              onClick={() => {
+                                dispatch(deleteTodo(todo.id));
+                              }}
+                            >
+                              <DeleteIcon />
+                            </Button>
+                          </Tooltip>
                         </div>
                       </div>
                     </div>
