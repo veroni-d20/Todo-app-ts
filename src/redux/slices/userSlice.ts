@@ -18,7 +18,7 @@ const userSlice = createSlice({
   name: "todoSlice",
   initialState,
   reducers: {
-    getUser: (state, action) => {},
+    getUser: () => {},
     setUser: (state, action: PayloadAction<object>) => {
       const userData = action.payload;
       return { ...state, ...userData };
