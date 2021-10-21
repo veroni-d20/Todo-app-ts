@@ -2,13 +2,19 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import UndoIcon from "@mui/icons-material/Undo";
 import Tooltip from "@mui/material/Tooltip";
+import SearchIcon from "@mui/icons-material/Search";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import {
+  Search,
+  SearchIconWrapper,
+  StyledInputBase,
+} from "../components/SearchBar";
 
 export default function TodosList() {
   const dispatch = useDispatch();
@@ -33,10 +39,6 @@ export default function TodosList() {
     }
   }
 
-  const flatProps = {
-    options: todos.map((option) => option.text),
-  };
-
   useEffect(() => {
     setTodoList(todos);
   }, [todos]);
@@ -44,16 +46,21 @@ export default function TodosList() {
   return (
     <>
       <section className="vh-100 d-flex flex-column align-items-center pt-0 pt-md-3">
-        <div className="mb-4" style={{ width: "50vw" }}>
-          <Autocomplete
-            onChange={(e, v) => handleChange(v)}
-            {...flatProps}
-            id="clear-on-escape"
-            clearOnEscape
-            renderInput={(params) => (
-              <TextField {...params} label="Search Todo" variant="standard" />
-            )}
-          />
+        <div className="mb-4" style={{ width: "97%" }}>
+          <AppBar position="static">
+            <Toolbar>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  onChange={(e) => handleChange(e.target.value)}
+                  placeholder="Search Todo"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Toolbar>
+          </AppBar>
         </div>
         <div
           className="container-fluid scroll-bar"
