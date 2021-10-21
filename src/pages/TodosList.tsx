@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
@@ -19,6 +19,7 @@ import {
 export default function TodosList() {
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todos);
+  const searchRef = useRef<HTMLInputElement | null>(null);
   const [todoList, setTodoList] = useState(todos);
 
   let size = 2;
@@ -41,6 +42,7 @@ export default function TodosList() {
 
   useEffect(() => {
     setTodoList(todos);
+    searchRef.current && (searchRef.current.value = "");
   }, [todos]);
 
   return (
@@ -54,6 +56,7 @@ export default function TodosList() {
                   <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
+                  inputRef={searchRef}
                   onChange={(e) => handleChange(e.target.value)}
                   placeholder="Search Todo"
                   inputProps={{ "aria-label": "search" }}
