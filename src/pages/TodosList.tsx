@@ -88,6 +88,7 @@ export default function TodosList() {
                           </Tooltip>
                           <Tooltip title="Delete">
                             <Button
+                              color="secondary"
                               variant="outlined"
                               onClick={() => {
                                 dispatch(deleteTodo(todo.id));
