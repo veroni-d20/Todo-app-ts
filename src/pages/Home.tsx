@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import TodosList from "./TodosList";
 import { useDispatch, useSelector } from "react-redux";
+import TodosList from "./TodosList";
 import { addTodo } from "../redux/slices/todoSlice";
+import { getUser } from "../redux/slices/userSlice";
+import { RootState } from "../redux/store";
 import { useAuth } from "../contexts/AuthContext";
 import Fab from "@mui/material/Fab";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { getUser } from "../redux/slices/userSlice";
-import { RootState } from "../redux/store";
 import SnackBar from "../components/SnackBar";
 import Loader from "../components/Loader";
 
