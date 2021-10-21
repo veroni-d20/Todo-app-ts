@@ -70,6 +70,20 @@ html::-webkit-scrollbar-thumb {
   justify-content: center;
 }
 
+.fab-button {
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+}
+
+// .addtodo-color {
+//   background-color: #181818;
+// }
+
+// body {
+//   background-color: #0f0f0f;
+// }
+
 .vh-100 {
   height: 100vh;
 }
@@ -97,5 +111,11 @@ html::-webkit-scrollbar-thumb {
   }
   .vh-md-50 {
     height: 50vh !important;
+  }
+}
+
+@media (max-width: 765px) {
+  .fab-button {
+    position: relative;
   }
 }
