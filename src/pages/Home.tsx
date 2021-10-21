@@ -35,10 +35,18 @@ export default function LandingPage() {
               <button
                 className="btn btn-outline-teal"
                 type="button"
-                id="todo-button"
                 onClick={handleSubmit}
               >
                 Add ToDo
+              </button>
+            </div>
+            <div className="mt-4 mt-md-5">
+              <button
+                className="btn btn-outline-black"
+                type="button"
+                onClick={logout}
+              >
+                Logout
               </button>
             </div>
           </div>
