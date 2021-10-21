@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { getUser } from "../redux/slices/userSlice";
 import { RootState } from "../redux/store";
+import SnackBar from "../components/SnackBar";
 
 export default function LandingPage() {
   const { logout } = useAuth();
@@ -30,10 +31,10 @@ export default function LandingPage() {
 
   return (
     <>
+      <SnackBar user={user[0].firstName} />
       <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
         <section className="d-md-flex flex-column align-justify-center w-md-50 vh-md-100 addtodo-color">
           <div className="text-center text-md-start">
-            <h3>Welcome {user[0].firstName}</h3>
             <h1 className="mt-4 mt-md-0">To Do App</h1>
             <div className="input-group mt-3">
               <input
