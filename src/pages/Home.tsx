@@ -1,15 +1,18 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import TodosList from "./TodosList";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/slices/todoSlice";
 import { useAuth } from "../contexts/AuthContext";
 import Fab from "@mui/material/Fab";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { getUser } from "../redux/slices/userSlice";
+import { RootState } from "../redux/store";
 
 export default function LandingPage() {
   const { logout } = useAuth();
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.users);
   const todoRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = () => {
@@ -20,11 +23,17 @@ export default function LandingPage() {
     todoRef.current && (todoRef.current.value = "");
   };
 
+  useEffect(() => {
+    dispatch(getUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
         <section className="d-md-flex flex-column align-justify-center w-md-50 vh-md-100 addtodo-color">
           <div className="text-center text-md-start">
+            <h3>Welcome {user[0].firstName}</h3>
             <h1 className="mt-4 mt-md-0">To Do App</h1>
             <div className="input-group mt-3">
               <input
