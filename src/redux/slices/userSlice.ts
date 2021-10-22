@@ -15,7 +15,7 @@ const initialState: IUser[] = [
 ];
 
 const userSlice = createSlice({
-  name: "todoSlice",
+  name: "userSlice",
   initialState,
   reducers: {
     getUser: () => {},
