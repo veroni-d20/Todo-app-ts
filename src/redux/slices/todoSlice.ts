@@ -20,6 +20,13 @@ const todoSlice = createSlice({
   name: "todoSlice",
   initialState,
   reducers: {
+    getTodo: () => {},
+
+    setTodo: (state, action: PayloadAction<ITodo[]>) => {
+      const { payload } = action;
+      payload.map((newTodo) => state.unshift(newTodo));
+    },
+
     addTodo: (state, action: PayloadAction<string>) => {
       const newTodo = {
         id: state.length > 0 ? state[0].id + 1 : state.length + 1,
@@ -47,5 +54,6 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, deleteTodo, completeTodo } = todoSlice.actions;
+export const { getTodo, setTodo, addTodo, deleteTodo, completeTodo } =
+  todoSlice.actions;
 export default todoSlice.reducer;
