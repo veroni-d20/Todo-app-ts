@@ -1,20 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/store";
-import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import UndoIcon from "@mui/icons-material/Undo";
-import Tooltip from "@mui/material/Tooltip";
 import SearchIcon from "@mui/icons-material/Search";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import { AppBar, Toolbar, Tooltip } from "@mui/material";
 import {
   Search,
   SearchIconWrapper,
   StyledInputBase,
 } from "../components/SearchBar";
+import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTodo, completeTodo } from "../redux/slices/todoSlice";
+import { RootState } from "../redux/store";
 
 export default function TodosList() {
   const dispatch = useDispatch();
