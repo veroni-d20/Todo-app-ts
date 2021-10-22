@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/slices/todoSlice";
 import { getUser } from "../redux/slices/userSlice";
+import { getTodo } from "../redux/slices/todoSlice";
 import { RootState } from "../redux/store";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -27,6 +28,7 @@ export default function LandingPage() {
   };
 
   useEffect(() => {
+    dispatch(getTodo());
     dispatch(getUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
