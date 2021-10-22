@@ -6,12 +6,22 @@ import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Slide, { SlideProps } from "@mui/material/Slide";
 
 type TransitionProps = Omit<SlideProps, "direction">;
+type Variant = "success" | "warning" | "error" | "info";
+type Direction = "left" | "right" | "up" | "down" | undefined;
 
-function TransitionUp(props: TransitionProps) {
-  return <Slide {...props} direction="up" />;
-}
+export default function SnackBar({
+  user,
+  direction,
+  severity,
+}: {
+  user?: string;
+  direction?: Direction;
+  severity: Variant;
+}) {
+  function TransitionUp(props: TransitionProps) {
+    return <Slide {...props} direction={direction} />;
+  }
 
-export default function SnackBar({ user }: { user: string }) {
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
     ref
@@ -51,7 +61,7 @@ export default function SnackBar({ user }: { user: string }) {
         action={action}
         TransitionComponent={TransitionUp}
       >
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
           Welcome {user} 🎉
         </Alert>
       </Snackbar>
