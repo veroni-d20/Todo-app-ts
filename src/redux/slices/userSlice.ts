@@ -29,6 +29,7 @@ const userSlice = createSlice({
     getUser: () => {},
     setUser: (state, action: PayloadAction<IUser>) => {
       state.users.push(action.payload);
+      state.userState = true;
     },
   },
 });
