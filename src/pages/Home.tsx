@@ -11,6 +11,7 @@ import { RootState } from "../redux/store";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function LandingPage() {
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const { logout } = useAuth();
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    userState && setLoading(false);
+    if (userState) {
+      setMessage(`Welcome ${users[1].firstName} 🎉`);
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userState]);
 
   return (
@@ -40,7 +45,7 @@ export default function LandingPage() {
         <Loader />
       ) : (
         <>
-          <SnackBar user={users[1].firstName} />
+          <SnackBar message={message} />
           <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
             <section className="d-md-flex flex-column align-justify-center w-md-50 vh-md-100 addtodo-color">
               <div className="text-center text-md-start">
