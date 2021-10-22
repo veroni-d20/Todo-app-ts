@@ -10,16 +10,16 @@ type Variant = "success" | "warning" | "error" | "info";
 type Direction = "left" | "right" | "up" | "down" | undefined;
 
 export default function SnackBar({
-  user,
+  message,
   direction,
   severity,
 }: {
-  user?: string;
+  message: string;
   direction?: Direction;
   severity: Variant;
 }) {
-  function TransitionUp(props: TransitionProps) {
-    return <Slide {...props} direction={direction} />;
+  function Transition(props: TransitionProps) {
+    return <Slide {...props} direction={direction ? direction : "up"} />;
   }
 
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -59,10 +59,10 @@ export default function SnackBar({
         onClose={handleClose}
         message="Welcome"
         action={action}
-        TransitionComponent={TransitionUp}
+        TransitionComponent={Transition}
       >
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
-          Welcome {user} 🎉
+          {message}
         </Alert>
       </Snackbar>
     </div>
