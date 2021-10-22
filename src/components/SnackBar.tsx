@@ -3,6 +3,13 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState, SyntheticEvent, MouseEvent, forwardRef } from "react";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Slide, { SlideProps } from "@mui/material/Slide";
+
+type TransitionProps = Omit<SlideProps, "direction">;
+
+function TransitionUp(props: TransitionProps) {
+  return <Slide {...props} direction="up" />;
+}
 
 export default function SnackBar({ user }: { user: string }) {
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -42,6 +49,7 @@ export default function SnackBar({ user }: { user: string }) {
         onClose={handleClose}
         message="Welcome"
         action={action}
+        TransitionComponent={TransitionUp}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Welcome {user} 🎉
