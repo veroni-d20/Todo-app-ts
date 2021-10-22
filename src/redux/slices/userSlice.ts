@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface User {
+interface IUser {
   id: number;
   firstName: string;
   lastName: string;
 }
 
-const initialState: User[] = [
+const initialState: IUser[] = [
   {
     id: 1,
     firstName: "Veroni",
@@ -19,7 +19,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     getUser: () => {},
-    setUser: (state, action: PayloadAction<User>) => {
+    setUser: (state, action: PayloadAction<IUser>) => {
       state.push(action.payload);
     },
   },
