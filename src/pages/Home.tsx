@@ -14,7 +14,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(true);
   const { logout } = useAuth();
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.users);
+  const { users, userState } = useSelector((state: RootState) => state.users);
   const todoRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = () => {
@@ -27,11 +27,12 @@ export default function LandingPage() {
 
   useEffect(() => {
     dispatch(getUser());
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    userState && setLoading(false);
+  }, [userState]);
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function LandingPage() {
         <Loader />
       ) : (
         <>
-          <SnackBar user={user[1].firstName} />
+          <SnackBar user={users[1].firstName} />
           <main className="full-vh d-md-flex justify-content-between align-items-center mx-4">
             <section className="d-md-flex flex-column align-justify-center w-md-50 vh-md-100 addtodo-color">
               <div className="text-center text-md-start">
