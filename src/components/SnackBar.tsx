@@ -16,7 +16,7 @@ export default function SnackBar({
 }: {
   message: string;
   direction?: Direction;
-  severity: Variant;
+  severity?: Variant;
 }) {
   function Transition(props: TransitionProps) {
     return <Slide {...props} direction={direction ? direction : "up"} />;
@@ -61,7 +61,11 @@ export default function SnackBar({
         action={action}
         TransitionComponent={Transition}
       >
-        <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
+        <Alert
+          onClose={handleClose}
+          severity={severity ? severity : "success"}
+          sx={{ width: "100%" }}
+        >
           {message}
         </Alert>
       </Snackbar>
