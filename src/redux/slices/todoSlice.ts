@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Todo {
+interface ITodo {
   id: number;
   text: string;
   completed: boolean;
 }
 
-const initialState: Todo[] = [
+const initialState: ITodo[] = [
   {
     id: 12,
     text: "Do assignment",
@@ -21,7 +21,7 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
-      const newTodo: Todo = {
+      const newTodo = {
         id: state.length > 0 ? state[0].id + 1 : state.length + 1,
         text: action.payload,
         completed: false,
