@@ -16,7 +16,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(true);
   const { logout } = useAuth();
   const dispatch = useDispatch();
-  const { users, userState } = useSelector((state: RootState) => state.users);
+  const users = useSelector((state: RootState) => state.users);
   const todoRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = () => {
@@ -28,18 +28,12 @@ export default function LandingPage() {
   };
 
   useEffect(() => {
-    dispatch(getTodo());
     dispatch(getUser());
+    dispatch(getTodo());
+    setMessage(`Welcome ${users[0].firstName} 🎉`);
+    setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (userState) {
-      setMessage(`Welcome ${users[1].firstName} 🎉`);
-      setLoading(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userState]);
 
   return (
     <>
