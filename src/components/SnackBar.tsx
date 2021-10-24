@@ -10,6 +10,11 @@ type Variant = "success" | "warning" | "error" | "info";
 type TransitionDirection = "left" | "right" | "up" | "down";
 type VerticalPosition = "top" | "bottom";
 type HorizontalPosition = "left" | "right" | "center";
+type SnackProps = {
+  open: boolean;
+  vertical: VerticalPosition;
+  horizontal: HorizontalPosition;
+};
 
 export default function SnackBar({
   message,
@@ -24,12 +29,6 @@ export default function SnackBar({
   vposition?: VerticalPosition;
   hposition?: HorizontalPosition;
 }) {
-  type SnackProps = {
-    open: boolean;
-    vertical: "top" | "bottom";
-    horizontal: "left" | "right" | "center";
-  };
-
   function Transition(props: TransitionProps) {
     return <Slide {...props} direction={transition ? transition : "up"} />;
   }
