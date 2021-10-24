@@ -43,8 +43,8 @@ export default function SnackBar({
 
   const [state, setState] = useState<SnackProps>({
     open: true,
-    vertical: vposition ? vposition : "top",
-    horizontal: hposition ? hposition : "center",
+    vertical: vposition ? vposition : "bottom",
+    horizontal: hposition ? hposition : "left",
   });
 
   const { vertical, horizontal, open } = state;
