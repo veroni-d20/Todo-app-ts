@@ -13,13 +13,13 @@ type HorizontalPosition = "left" | "right" | "center";
 
 export default function SnackBar({
   message,
-  direction,
+  transition,
   severity,
   vposition,
   hposition,
 }: {
   message: string;
-  direction?: TransitionDirection;
+  transition?: TransitionDirection;
   severity?: Variant;
   vposition?: VerticalPosition;
   hposition?: HorizontalPosition;
@@ -31,7 +31,7 @@ export default function SnackBar({
   };
 
   function Transition(props: TransitionProps) {
-    return <Slide {...props} direction={direction ? direction : "up"} />;
+    return <Slide {...props} direction={transition ? transition : "up"} />;
   }
 
   const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
