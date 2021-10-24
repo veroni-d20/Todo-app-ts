@@ -7,17 +7,29 @@ import Slide, { SlideProps } from "@mui/material/Slide";
 
 type TransitionProps = Omit<SlideProps, "direction">;
 type Variant = "success" | "warning" | "error" | "info";
-type Direction = "left" | "right" | "up" | "down" | undefined;
+type TransitionDirection = "left" | "right" | "up" | "down";
+type VerticalPosition = "top" | "bottom";
+type HorizontalPosition = "left" | "right" | "center";
 
 export default function SnackBar({
   message,
   direction,
   severity,
+  vposition,
+  hposition,
 }: {
   message: string;
-  direction?: Direction;
+  direction?: TransitionDirection;
   severity?: Variant;
+  vposition?: VerticalPosition;
+  hposition?: HorizontalPosition;
 }) {
+  type SnackProps = {
+    open: boolean;
+    vertical: "top" | "bottom";
+    horizontal: "left" | "right" | "center";
+  };
+
   function Transition(props: TransitionProps) {
     return <Slide {...props} direction={direction ? direction : "up"} />;
   }
@@ -29,13 +41,19 @@ export default function SnackBar({
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const [open, setOpen] = useState(true);
+  const [state, setState] = useState<SnackProps>({
+    open: true,
+    vertical: vposition ? vposition : "top",
+    horizontal: hposition ? hposition : "center",
+  });
+
+  const { vertical, horizontal, open } = state;
 
   const handleClose = (event: SyntheticEvent | MouseEvent, reason?: string) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpen(false);
+    setState({ ...state, open: false });
   };
 
   const action = (
@@ -54,10 +72,10 @@ export default function SnackBar({
   return (
     <div>
       <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        message="Welcome"
         action={action}
         TransitionComponent={Transition}
       >
